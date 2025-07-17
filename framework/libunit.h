@@ -7,6 +7,7 @@ typedef struct	s_unit {
 	struct s_unit	*next;
 }	t_unit;
 
-// int load_test(t)
+int	load_test(t_unit **tests_list, char *test_name, int (*test_func)(void));
+int	launch_tests(t_unit **tests_list);
 
 #endif	// LIBUNIT_H
