@@ -4,6 +4,7 @@
 typedef struct	s_unit {
 	char *test_name;
 	int	(*test_func)(void);
+	struct s_unit	*prev;
 	struct s_unit	*next;
 }	t_unit;
 
