@@ -48,11 +48,10 @@ static void	parent_proc(t_test_lst *test, t_unit *unit)
 int	launch_tests(t_unit *unit)
 {
 	t_test_lst	*test;
-	t_unit		*unit;
 	int			res;
 
 	test = pop_test(unit);
-		while (test)
+	while (test)
 	{
 		test->pid = fork();
 		if (test->pid < 0)
@@ -61,7 +60,6 @@ int	launch_tests(t_unit *unit)
 		{
 			clean_tests(unit);
 			res = test->test_func();
-			ft_free(unit);// to free unit and test
 			exit(!!res);
 		}
 		else
@@ -70,7 +68,6 @@ int	launch_tests(t_unit *unit)
 	}
 	ft_putnbr_fd(unit->success_count, 1);
 	ft_putstr_fd("tests checked.\n", 1);
-	ft_free(unit);
 	return (0);
 }
 

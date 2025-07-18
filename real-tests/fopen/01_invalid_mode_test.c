@@ -1,4 +1,4 @@
-#include "popen_tests.h"
+int	ft_popen(char **argv, char mode);
 
 int	invalid_mode_test(void)
 {

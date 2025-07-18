@@ -25,9 +25,5 @@ typedef struct	s_unit {
 void	load_unit(t_unit *unit, char *func_name);
 int		load_test(t_unit *unit, char *test_name, int (*test_func)(void));
 int		launch_tests(t_unit *unit);
-void	ft_free(t_unit *unit);
-int		strlen_launcher(void);
-int		atoi_launcher(void);
-
 
 #endif	// LIBUNIT_H

@@ -1,13 +1,8 @@
-
-#include "libunit.h"
-
-int ft_popen_launcher(void);
-int	ft_atoi_launcher(void);
+#include "tests.h"
 
 int	main(void)
 {
-
-	ft_popen_launcher();
-	ft_atoi_launcher();
+	FT_POPEN_LAUNCHER;
+	FT_ATOI_LAUNCHER;
 	return(0);
 }
