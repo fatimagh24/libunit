@@ -1,5 +1,6 @@
 #include "libunit.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 int load_test(t_unit **tests_list, char *test_name, int (*test_func)(void))
 {
@@ -12,7 +13,8 @@ int load_test(t_unit **tests_list, char *test_name, int (*test_func)(void))
 	unit->test_func = test_func;
 	unit->next = *tests_list;
 	unit->prev = NULL;
-	(*tests_list)->prev = unit;
+	if (*tests_list)
+		(*tests_list)->prev = unit;
 	*tests_list = unit;
 	return (0);
 }
