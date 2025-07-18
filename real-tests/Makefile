@@ -13,14 +13,26 @@ INCLUDES = -I$(LIBUNIT_PATH)		\
 
 SOURCES = main.c
 
-ifndef POPEN_TESTS
-POPEN_TESTS = 1
+ifndef FT_POPEN_TESTS
+FT_POPEN_TESTS = 1
 endif
-
-ifeq ($(POPEN_TESTS), 1) 
+ifeq ($(FT_POPEN_TESTS), 1)
+# CFLAGS += -DFT_POPEN_TESTS
 SOURCES +=	../functions/ft_popen.c				\
 			fopen/00_launcher.c					\
 			fopen/01_invalid_mode_test.c		\
+
+endif
+
+ifndef FT_ATOI_TESTS
+FT_ATOI_TESTS = 1
+endif
+ifeq ($(FT_ATOI_TESTS), 1)
+# CFLAGS += -DFT_ATOI_TESTS
+SOURCES +=	ft_atoi/02_basic_negative_test.c 	\
+			ft_atoi/03_zero_test.c				\
+			ft_atoi/00_launcher.c				\
+			ft_atoi/01_basic_positive_test.c	\
 
 endif
 
