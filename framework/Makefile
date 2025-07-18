@@ -2,10 +2,12 @@ NAME = libunit.a
 
 AR = ar
 CC = cc
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -Wall -Wextra -Werror -g
+INCLUDES = -I../libft
 
 SOURCES =	launch_tests.c	\
 			load_test.c		\
+			load_unit.c		\
 
 OBJECTS = $(SOURCES:%.c=%.o)
 

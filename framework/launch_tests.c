@@ -1,41 +1,69 @@
 #include "libunit.h"
-#include "101_basic_tests.h"
 #include <signal.h>
+#include "libft.h"
 
-int	launch_tests(t_unit **tests_list)
+static t_test_lst	*pop_test(t_unit *unit)
 {
-	t_unit	*cur;
+	t_test_lst	*test;
 
-	cur = *tests_list;
-	while (cur && cur->next) // stop in last node
-		cur = cur->next;
-	while (cur && cur->prev)
+	test = unit->head;
+	if (!test)
+		return (NULL);
+	if (test == unit->tail)
+		unit->tail = NULL;
+	unit->head = unit->head->next;
+	test->next = NULL;
+	return (test);
+}
+
+static void	clean_tests(t_unit *unit)
+{
+	t_test_lst	*test;
+
+	test = pop_test(unit);
+	while (test)
 	{
-		cur->pid = fork();
-		if (cur->pid < 0)
+		free(test);
+		test = pop_test(unit);
+	}
+}
+
+int	launch_tests(t_unit *unit)
+{
+	t_test_lst	*test;
+	int			res;
+
+	test = pop_test(unit);
+	while (test)
+	{
+		test->pid = fork();
+		if (test->pid < 0)
 			return(-1);
-		if (cur->pid == 0)
+		if (test->pid == 0)
 		{
-			if (cur->test_func() == 0)
-				exit(0);
-			else
-				exit(1);
+			clean_tests(unit);
+			res = test->test_func();
+			free(test);
+			exit(!!res);
 		}
 		else
 		{
-			wait(&cur->status);
-			ft_putstr_fd("FT_STRLEN: " , 1);
-			ft_putstr_fd(cur->test_name, 1);
-			if (WIFSIGNALED(cur->status) && WTERMSIG(cur->status) == SIGSEGV)
+			wait(&test->status);
+			ft_putstr_fd(unit->function_name, 1);
+			ft_putstr_fd(": " , 1);
+			ft_putstr_fd(test->test_name, 1);
+			if (WIFSIGNALED(test->status) && WTERMSIG(test->status) == SIGSEGV)
 				ft_putstr_fd(" [SIGSEGV]\n", 1);
-			if (WIFEXITED(cur->status) && WEXITSTATUS(cur->status) == 0)
+			if (WIFEXITED(test->status) && WEXITSTATUS(test->status) == 0)
 			{
 				ft_putstr_fd(" [OK]\n", 1);
-				cur->success_count++;
+				unit->success_count++;
 			}
 			else
 				ft_putstr_fd(" [KO]\n", 1);
 		}
-		cur = cur->prev;
+		free(test);
+		test = pop_test(unit);
 	}
+	return (0);
 }

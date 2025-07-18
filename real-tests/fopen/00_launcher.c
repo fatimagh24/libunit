@@ -2,14 +2,13 @@
 #include "popen_tests.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <libft.h>
 
 int ft_popen_launcher(void)
 {
-	t_unit	*lst;
-
-	lst = NULL;
-	printf("test >\n");
-	load_test(&lst, "Invalid Mode", &invalid_mode_test);
-	printf("test <\n");
-	return (launch_tests(&lst));
+	t_unit	unit;
+	
+	load_unit(&unit, "POPEN");
+	load_test(&unit, "Invalid Mode", &invalid_mode_test);
+	return (launch_tests(&unit));
 }

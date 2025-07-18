@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 static int	redirection(int pipe_fds[2], char mode)
 {
@@ -31,6 +32,7 @@ int	ft_popen(char **argv, char mode)
 	int	pid;
 	int	pipe_fds[2];
 
+
 	if (mode != 'w' && mode != 'r')
 		return (-1);
 	if (pipe(pipe_fds) == -1)
@@ -59,4 +61,5 @@ int	ft_popen(char **argv, char mode)
 		close(pipe_fds[0]);
 		return (pipe_fds[1]);
 	}
+	return (-1);
 }
