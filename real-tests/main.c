@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   101_basic_tests.h                                  :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fatoom <fatoom@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/17 17:57:19 by yaltayeh          #+#    #+#             */
-/*   Updated: 2025/07/17 23:05:15 by fatoom           ###   ########.fr       */
+/*   Created: 2025/07/17 21:20:19 by fatoom            #+#    #+#             */
+/*   Updated: 2025/07/17 23:10:38 by fatoom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _101_BASIC_TESTS_H
-# define _101_BASIC_TESTS_H
+#include "libunit.h"
 
-#include <unistd.h>
-#include <sys/wait.h>
-#include <stdlib.h>
-#include <string.h>
+int	main(void)
+{
+	int	res;
 
-int	basic_test(void);
-int	null_test(void);
-int big_text_test(void);
-int	segfault_test(void);
-int	basic_positive_test(void);
-int	basic_negative_test(void);
-int	zero_test(void);
-
-#endif
+	res = strlen_launcher();
+	return(res);
+}

@@ -7,6 +7,7 @@ int strlen_launcher(void)
 
 	load_test(&testlist, "Basic test", &basic_test);
 	load_test(&testlist, "NULL test", &null_test);
-	// load_test(&testlist, "Bigger string test", &bigger_str_test); /* This test won't be loaded */
+	load_test(&testlist, "SEGFAULT test", &segfault_test);
+	load_test(&testlist, "Big text test", &big_text_test);
 	return (launch_tests(&testlist));
 }

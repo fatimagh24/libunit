@@ -9,11 +9,16 @@ BUILD_DIR = build
 SOURCES =	framework/load_test.c				\
 			framework/launch_tests.c			\
 			\
-			tests/strlen/01_basic_test.c		\
-			tests/strlen/03_bigger_str_test.c	\
-			tests/strlen/00_launcher.c			\
-			tests/strlen/02_null_test.c			\
-
+			real-tests/ft_strlen/01_basic_test.c		\
+			real-tests/ft_strlen/03_big_text_test.c	\
+			real-tests/ft_strlen/00_launcher.c			\
+			real-tests/ft_strlen/02_null_test.c			\
+			real-tests/ft_strlen/04_segfault_test.c		\
+			real-tests/ft_atoi/00_launcher.c			\
+			real-tests/ft_atoi/01_basic_positive_test.c	\
+			real-tests/ft_atoi/02_basic_negative_test.c	\
+			real-tests/ft_atoi/03_zero_test.c
+			
 OBJECTS = $(SOURCES:/%.c=$(BUILD_DIR)/%.o)
 
 all: $(TARGETS)
