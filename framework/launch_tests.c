@@ -4,6 +4,7 @@
 
 int	launch_tests(t_unit **tests_list)
 {
+	t_unit	*temp;
 	t_unit	*cur;
 
 	cur = *tests_list;
@@ -36,6 +37,9 @@ int	launch_tests(t_unit **tests_list)
 			else
 				ft_putstr_fd(" [KO]\n", 1);
 		}
+		temp = cur;
 		cur = cur->prev;
+		free(temp->test_name);
+		free(temp);
 	}
 }
