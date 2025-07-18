@@ -1,5 +1,6 @@
 #include "libunit.h"
-#include "101_basic_tests.h"
+#include "atoi_test.h"
+#include "libft.h"
 
 int	zero_test(void)
 {

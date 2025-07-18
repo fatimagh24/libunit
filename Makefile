@@ -8,6 +8,7 @@ BUILD_DIR = build
 
 SOURCES =	framework/load_test.c				\
 			framework/launch_tests.c			\
+			framework/utils.c			\
 			\
 			real-tests/ft_strlen/01_basic_test.c		\
 			real-tests/ft_strlen/03_big_text_test.c	\
@@ -18,7 +19,7 @@ SOURCES =	framework/load_test.c				\
 			real-tests/ft_atoi/01_basic_positive_test.c	\
 			real-tests/ft_atoi/02_basic_negative_test.c	\
 			real-tests/ft_atoi/03_zero_test.c
-			
+
 OBJECTS = $(SOURCES:/%.c=$(BUILD_DIR)/%.o)
 
 all: $(TARGETS)

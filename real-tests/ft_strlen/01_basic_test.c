@@ -1,4 +1,6 @@
 #include <string.h>
+#include "strlen_test.h"
+#include "libft.h"
 
 int basic_test(void)
 {

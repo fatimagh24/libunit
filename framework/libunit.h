@@ -7,20 +7,27 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef struct	s_test_lst {
+	char				*test_name;
+	int					(*test_func)(void);
+	pid_t				pid;
+	int					status;
+	struct s_test_lst	*next;
+}	t_test_lst;
+
 typedef struct	s_unit {
-	char *test_name;
-	int	(*test_func)(void);
-	int	success_count;
-	pid_t	pid;
-	int		status;
-	struct s_unit	*prev;
-	struct s_unit	*next;
+	char		*function_name;
+	int			success_count;
+	t_test_lst	*head;
+	t_test_lst	*tail;
 }	t_unit;
 
-int	load_test(t_unit **tests_list, char *test_name, int (*test_func)(void));
-int	launch_tests(t_unit **tests_list);
-int strlen_launcher(void);
-int	atoi_launcher(void);
+void	load_unit(t_unit *unit, char *func_name);
+int		load_test(t_unit *unit, char *test_name, int (*test_func)(void));
+int		launch_tests(t_unit *unit);
+void	ft_free(t_unit *unit);
+int		strlen_launcher(void);
+int		atoi_launcher(void);
 
 
 #endif	// LIBUNIT_H

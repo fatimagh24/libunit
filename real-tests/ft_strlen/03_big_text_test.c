@@ -1,4 +1,6 @@
 #include "libunit.h"
+#include "strlen_test.h"
+#include "libft.h"
 
 int big_text_test(void)
 {
