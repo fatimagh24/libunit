@@ -1,4 +1,5 @@
 #include "libunit.h"
+#include <stdio.h>
 
 int	launch_tests(t_unit **tests_list)
 {
@@ -15,4 +16,5 @@ int	launch_tests(t_unit **tests_list)
 		cur = cur->prev;
 		i++;
 	}
+	return (0);
 }
