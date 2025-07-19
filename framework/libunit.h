@@ -6,7 +6,7 @@
 /*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:46:05 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 23:25:58 by yaltayeh         ###   ########.fr       */
+/*   Updated: 2025/07/19 23:36:01 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void					load_unit(t_unit *unit, char *func_name);
 int						load_test(t_unit *unit, char *test_name,
 							int (*test_func)(void));
 int						launch_tests(t_unit *unit);
+t_test_lst				*pop_test(t_unit *unit);
+void					clean_tests(t_unit *unit);
 char					shift_index(unsigned int i, char c);
 char					index_mod_10(unsigned int i, char c);
 char					invert_case(unsigned int i, char c);

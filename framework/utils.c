@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_toupper_test.c                                  :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 14:16:37 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 23:37:03 by yaltayeh         ###   ########.fr       */
+/*   Created: 2025/07/19 23:35:09 by yaltayeh          #+#    #+#             */
+/*   Updated: 2025/07/19 23:35:25 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
 #include "libunit.h"
 
-int	toupper_test(void)
+t_test_lst	*pop_test(t_unit *unit)
 {
-	if (ft_strcmp(ft_strmapi("hello world", to_upper_mapper),
-			"HELLO WORLD") == 0)
-		return (0);
-	else
-		return (-1);
+	t_test_lst	*test;
+
+	test = unit->head;
+	if (!test)
+		return (NULL);
+	if (test == unit->tail)
+		unit->tail = NULL;
+	unit->head = unit->head->next;
+	test->next = NULL;
+	return (test);
+}
+
+void	clean_tests(t_unit *unit)
+{
+	t_test_lst	*test;
+
+	test = pop_test(unit);
+	while (test)
+	{
+		free(test);
+		test = pop_test(unit);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:46:02 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 23:32:35 by yaltayeh         ###   ########.fr       */
+/*   Updated: 2025/07/19 23:35:01 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,6 @@
 #include <signal.h>
 #include <sys/wait.h>
 #include <unistd.h>
-
-static t_test_lst	*pop_test(t_unit *unit)
-{
-	t_test_lst	*test;
-
-	test = unit->head;
-	if (!test)
-		return (NULL);
-	if (test == unit->tail)
-		unit->tail = NULL;
-	unit->head = unit->head->next;
-	test->next = NULL;
-	return (test);
-}
-
-static void	clean_tests(t_unit *unit)
-{
-	t_test_lst	*test;
-
-	test = pop_test(unit);
-	while (test)
-	{
-		free(test);
-		test = pop_test(unit);
-	}
-}
 
 static void	print_signal(char *function_name, char *test_name, int status)
 {

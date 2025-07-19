@@ -8,7 +8,8 @@ INCLUDES = -I../libft/include
 SOURCES =	launch_tests.c	\
 			load_test.c		\
 			load_unit.c		\
-			extra_funcs.c
+			extra_funcs.c	\
+			utils.c			\
 
 OBJECTS = $(SOURCES:%.c=%.o)
 
