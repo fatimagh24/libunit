@@ -32,6 +32,23 @@ static void	clean_tests(t_unit *unit)
 	}
 }
 
+static int	print_error(char *function_name, char *test_name, int status)
+{
+	ft_putstr_fd(function_name, 1);
+	ft_putstr_fd(": ", 1);
+	ft_putstr_fd(test_name, 1);
+	if (WIFSIGNALED(status) && WTERMSIG(status) == SIGSEGV)
+		ft_putstr_fd(" [SIGSEGV]\n", 1);
+	if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
+	{
+		ft_putstr_fd(" [OK]\n", 1);
+		return (1);
+	}
+	else
+		ft_putstr_fd(" [KO]\n", 1);
+	return (0);
+}
+
 int	launch_tests(t_unit *unit)
 {
 	t_test_lst	*test;
@@ -51,19 +68,8 @@ int	launch_tests(t_unit *unit)
 			exit(!!res);
 		}
 		wait(&test->status);
-		wait3();
-		ft_putstr_fd(unit->function_name, 1);
-		ft_putstr_fd(": ", 1);
-		ft_putstr_fd(test->test_name, 1);
-		if (WIFSIGNALED(test->status) && WTERMSIG(test->status) == SIGSEGV)
-			ft_putstr_fd(" [SIGSEGV]\n", 1);
-		if (WIFEXITED(test->status) && WEXITSTATUS(test->status) == 0)
-		{
-			ft_putstr_fd(" [OK]\n", 1);
-			unit->success_count++;
-		}
-		else
-			ft_putstr_fd(" [KO]\n", 1);
+		unit->success_count += print_error(unit->function_name, 
+			test->test_name, test->status);
 		free(test);
 		test = pop_test(unit);
 	}
