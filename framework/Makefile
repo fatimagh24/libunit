@@ -3,7 +3,7 @@ NAME = libunit.a
 AR = ar
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
-INCLUDES = -I../libft
+INCLUDES = -I../libft/include
 
 SOURCES =	launch_tests.c	\
 			load_test.c		\
@@ -21,7 +21,7 @@ $(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJECTS)
 
 fclean: clean
 	rm -f $(NAME)

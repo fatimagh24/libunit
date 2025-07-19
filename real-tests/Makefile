@@ -65,6 +65,8 @@ test: $(NAME)
 	./$(NAME)
 
 clean:
+	$(MAKE) clean -C $(LIBFT_PATH)
+	$(MAKE) fclean -C $(LIBUNIT_PATH)
 	rm -f $(OBJS)
 
 fclean: clean

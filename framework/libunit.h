@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libunit.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fghanem <fghanem@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:46:05 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 15:33:21 by fghanem          ###   ########.fr       */
+/*   Updated: 2025/07/19 23:08:18 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ typedef struct s_test_lst
 typedef struct s_unit
 {
 	char				*function_name;
-	int					success_count;
+	int					success_tests;
+	int					total_tests;
 	t_test_lst			*head;
 	t_test_lst			*tail;
 }						t_unit;

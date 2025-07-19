@@ -6,17 +6,14 @@
 /*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:46:02 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 23:04:12 by yaltayeh         ###   ########.fr       */
+/*   Updated: 2025/07/19 23:12:30 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/ft_printf.h"
+#include <ft_printf.h>
 #include <libft.h>
 #include "libunit.h"
 #include <signal.h>
-#include <sys/resource.h>
-#include <sys/time.h>
-#include <sys/types.h>
 #include <sys/wait.h>
 
 static t_test_lst	*pop_test(t_unit *unit)
@@ -86,12 +83,13 @@ int	launch_tests(t_unit *unit)
 			exit(!!res);
 		}
 		wait(&test->status);
-		unit->success_count += print_status(unit->function_name,
+		unit->success_tests += print_status(unit->function_name,
 				test->test_name,
 				test->status);
+		unit->total_tests++;
 		free(test);
 		test = pop_test(unit);
 	}
-	ft_printf("%d tests passed\n", unit->success_count);
+	ft_printf("%d/%d tests passed\n\n", unit->success_tests, unit->total_tests);
 	return (0);
 }
