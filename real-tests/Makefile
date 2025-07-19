@@ -13,16 +13,6 @@ INCLUDES = -I$(LIBUNIT_PATH)		\
 
 SOURCES = main.c
 
-### ft_popen tests files
-FT_POPEN_TESTS ?= 1
-ifeq ($(FT_POPEN_TESTS), 1)
-CFLAGS += -DFT_POPEN_TESTS
-SOURCES +=	../functions/ft_popen.c				\
-			fopen/00_launcher.c					\
-			fopen/01_invalid_mode_test.c		\
-
-endif
-
 ### ft_atoi tests files
 FT_ATOI_TESTS ?= 1
 ifeq ($(FT_ATOI_TESTS), 1)
@@ -39,13 +29,13 @@ OBJS = $(SOURCES:%.c=%.o)
 
 all: $(NAME)
 
-libunit: 
+libunit $(LIBUNIT_PATH)/libunit.a: 
 	@$(MAKE) -C $(LIBUNIT_PATH)
 
-libft:
+libft $(LIBFT_PATH)/libft.a:
 	@$(MAKE) -C $(LIBFT_PATH)
 
-$(NAME): $(OBJS) $(LIBUNIT_PATH)/libunit.a $(LIBFT_PATH)/libft.a | libft libunit 
+$(NAME): $(OBJS) $(LIBUNIT_PATH)/libunit.a $(LIBFT_PATH)/libft.a | libunit libft
 	$(CC) $(OBJS) -o $@ $(LDFLAGS)
 
 %.o: %.c
@@ -63,4 +53,4 @@ fclean: clean
 
 re: clean all
 
-.PHONY: all test clean re
+.PHONY: all test clean re libunit libft
