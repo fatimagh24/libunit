@@ -6,7 +6,7 @@
 /*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:34:47 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 23:04:12 by yaltayeh         ###   ########.fr       */
+/*   Updated: 2025/07/19 23:33:08 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,16 @@ char	space_to_underscore(unsigned int i, char c)
 {
 	(void)i;
 	if (c == ' ')
+	{
+		sleep(5);
 		return ('_');
+	}
 	return (c);
 }
 
 char	to_upper_mapper(unsigned int i, char c)
 {
 	(void)i;
+	sleep(1);
 	return ((char)ft_toupper((int)c));
 }

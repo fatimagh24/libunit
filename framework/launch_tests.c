@@ -6,7 +6,7 @@
 /*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:46:02 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 23:26:26 by yaltayeh         ###   ########.fr       */
+/*   Updated: 2025/07/19 23:32:35 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "libunit.h"
 #include <signal.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 static t_test_lst	*pop_test(t_unit *unit)
 {
@@ -54,6 +55,8 @@ static void	print_signal(char *function_name, char *test_name, int status)
 		ft_printf(MAG"%s: %s %s\n"RESET, function_name, test_name, "[SIGPIPE]");
 	else if (WTERMSIG(status) == SIGILL)
 		ft_printf(MAG"%s: %s %s\n"RESET, function_name, test_name, "[SIGILL]");
+	else if (WTERMSIG(status) == SIGALRM)
+		ft_printf(RED"%s: %s %s\n"RESET, function_name, test_name, "[TIME OUT]");
 }
 
 static int	print_status(char *function_name, char *test_name, int status)
@@ -87,6 +90,7 @@ int	launch_tests(t_unit *unit)
 		if (test->pid == 0)
 		{
 			clean_tests(unit);
+			alarm(3);
 			res = test->test_func();
 			free(test);
 			exit(!!res);

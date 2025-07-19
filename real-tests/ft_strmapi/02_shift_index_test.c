@@ -6,13 +6,12 @@
 /*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 15:35:58 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 23:04:12 by yaltayeh         ###   ########.fr       */
+/*   Updated: 2025/07/19 23:30:23 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include "libunit.h"
-#include "strmapi_test.h"
 
 int	shift_index_test(void)
 {

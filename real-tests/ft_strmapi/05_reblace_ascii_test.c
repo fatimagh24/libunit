@@ -6,13 +6,12 @@
 /*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 15:35:26 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 23:04:12 by yaltayeh         ###   ########.fr       */
+/*   Updated: 2025/07/19 23:30:18 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include "libunit.h"
-#include "strmapi_test.h"
 
 int	replace_ascii_test(void)
 {
