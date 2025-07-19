@@ -6,7 +6,7 @@
 /*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:46:05 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 23:08:18 by yaltayeh         ###   ########.fr       */
+/*   Updated: 2025/07/19 23:25:58 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <unistd.h>
+
+# define RESET   "\033[0m"
+# define RED     "\033[31m"
+# define GRN   "\033[32m"
+# define MAG "\033[35m"
 
 typedef struct s_test_lst
 {

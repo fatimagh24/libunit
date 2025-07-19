@@ -6,7 +6,7 @@
 /*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:46:02 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 23:12:30 by yaltayeh         ###   ########.fr       */
+/*   Updated: 2025/07/19 23:26:26 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,34 @@ static void	clean_tests(t_unit *unit)
 	}
 }
 
+static void	print_signal(char *function_name, char *test_name, int status)
+{
+	if (WTERMSIG(status) == SIGSEGV)
+		ft_printf(MAG"%s: %s %s\n"RESET, function_name, test_name, "[SIGV]");
+	else if (WTERMSIG(status) == SIGBUS)
+		ft_printf(MAG"%s: %s %s\n"RESET, function_name, test_name, "[SIGBUS]");
+	else if (WTERMSIG(status) == SIGABRT)
+		ft_printf(MAG"%s: %s %s\n"RESET, function_name, test_name, "[SIGABRT]");
+	else if (WTERMSIG(status) == SIGPIPE)
+		ft_printf(MAG"%s: %s %s\n"RESET, function_name, test_name, "[SIGPIPE]");
+	else if (WTERMSIG(status) == SIGILL)
+		ft_printf(MAG"%s: %s %s\n"RESET, function_name, test_name, "[SIGILL]");
+}
+
 static int	print_status(char *function_name, char *test_name, int status)
 {
 	if (WIFEXITED(status))
 	{
 		if (WEXITSTATUS(status) == 0)
 		{
-			ft_printf("%s: %s %s\n", function_name, test_name, "[OK]");
+			ft_printf(GRN"%s: %s %s\n"RESET, function_name, test_name, "[OK]");
 			return (1);
 		}
 		else
-			ft_printf("%s: %s %s\n", function_name, test_name, "[KO]");
+			ft_printf(RED"%s: %s %s\n"RESET, function_name, test_name, "[KO]");
 	}
 	else if (WIFSIGNALED(status))
-	{
-		if (WTERMSIG(status) == SIGSEGV)
-			ft_printf("%s: %s %s\n", function_name, test_name, "[SIGV]");
-		else if (WTERMSIG(status) == SIGBUS)
-			ft_printf("%s: %s %s\n", function_name, test_name, "[SIGBUS]");
-	}
+		print_signal(function_name, test_name, status);
 	return (0);
 }
 
@@ -84,8 +93,7 @@ int	launch_tests(t_unit *unit)
 		}
 		wait(&test->status);
 		unit->success_tests += print_status(unit->function_name,
-				test->test_name,
-				test->status);
+				test->test_name, test->status);
 		unit->total_tests++;
 		free(test);
 		test = pop_test(unit);

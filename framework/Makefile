@@ -14,6 +14,8 @@ OBJECTS = $(SOURCES:%.c=%.o)
 
 all: $(NAME)
 
+bonus: $(NAME)
+
 $(NAME): $(OBJECTS)
 	$(AR) rcs $(NAME) $?
 
