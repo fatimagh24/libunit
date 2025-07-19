@@ -4,3 +4,6 @@
 
 *tests
 !real-tests
+!tests
+real-tests/tests
+tests/tests

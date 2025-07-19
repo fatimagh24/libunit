@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __LIBUNIT_H__
-# define __LIBUNIT_H__
+#ifndef LIBUNIT_H
+# define LIBUNIT_H
 
 # include <stdlib.h>
 # include <string.h>

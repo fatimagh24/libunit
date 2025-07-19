@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_unit.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 13:46:14 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 23:04:12 by yaltayeh         ###   ########.fr       */
+/*   Created: 2025/07/19 13:45:45 by fghanem           #+#    #+#             */
+/*   Updated: 2025/07/19 23:00:46 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include "libunit.h"
+int	kill_launcher(void);
+int	ft_strlen_fake_launcher(void);
 
-void	load_unit(t_unit *unit, char *func_name)
+int	main(void)
 {
-	ft_bzero(unit, sizeof(*unit));
-	unit->function_name = func_name;
+	kill_launcher();
+	ft_strlen_fake_launcher();
+	return (0);
 }

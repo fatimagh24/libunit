@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_unit.c                                        :+:      :+:    :+:   */
+/*   01_basic_test.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 13:46:14 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 23:04:12 by yaltayeh         ###   ########.fr       */
+/*   Created: 2025/07/19 23:00:24 by yaltayeh          #+#    #+#             */
+/*   Updated: 2025/07/19 23:00:25 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
-#include "libunit.h"
 
-void	load_unit(t_unit *unit, char *func_name)
+int	basic_test(void)
 {
-	ft_bzero(unit, sizeof(*unit));
-	unit->function_name = func_name;
+	if (ft_strlen_fake("test test") == 9)
+		return (0);
+	else
+		return (-1);
 }

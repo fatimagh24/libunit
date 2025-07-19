@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_unit.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yaltayeh <yaltayeh@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 13:46:14 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 23:04:12 by yaltayeh         ###   ########.fr       */
+/*   Created: 2024/08/26 20:31:31 by yaltayeh          #+#    #+#             */
+/*   Updated: 2024/11/02 00:46:01 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include "libunit.h"
+#include "libft.h"
 
-void	load_unit(t_unit *unit, char *func_name)
+size_t	ft_strlen_fake(const char *s)
 {
-	ft_bzero(unit, sizeof(*unit));
-	unit->function_name = func_name;
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i - 1);
 }

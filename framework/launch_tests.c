@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   launch_tests.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fghanem <fghanem@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:46:02 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 18:06:10 by fghanem          ###   ########.fr       */
+/*   Updated: 2025/07/19 23:04:12 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/ft_printf.h"
-#include "include/libft.h"
+#include <libft.h>
 #include "libunit.h"
 #include <signal.h>
 #include <sys/resource.h>
@@ -45,19 +45,25 @@ static void	clean_tests(t_unit *unit)
 	}
 }
 
-static int	print_error(char *function_name, char *test_name, int status)
+static int	print_status(char *function_name, char *test_name, int status)
 {
-	if (WIFSIGNALED(status) && WTERMSIG(status) == SIGSEGV)
-		ft_printf("%s: %s %s\n", function_name, test_name, "[SIGV]");
-	if (WIFSIGNALED(status) && WTERMSIG(status) == SIGBUS)
-		ft_printf("%s: %s %s\n", function_name, test_name, "[SIGBUS]");
-	if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
+	if (WIFEXITED(status))
 	{
-		ft_printf("%s: %s %s\n", function_name, test_name, "[OK]");
-		return (1);
+		if (WEXITSTATUS(status) == 0)
+		{
+			ft_printf("%s: %s %s\n", function_name, test_name, "[OK]");
+			return (1);
+		}
+		else
+			ft_printf("%s: %s %s\n", function_name, test_name, "[KO]");
 	}
-	else
-		ft_printf("%s: %s %s\n", function_name, test_name, "[KO]");
+	else if (WIFSIGNALED(status))
+	{
+		if (WTERMSIG(status) == SIGSEGV)
+			ft_printf("%s: %s %s\n", function_name, test_name, "[SIGV]");
+		else if (WTERMSIG(status) == SIGBUS)
+			ft_printf("%s: %s %s\n", function_name, test_name, "[SIGBUS]");
+	}
 	return (0);
 }
 
@@ -80,7 +86,7 @@ int	launch_tests(t_unit *unit)
 			exit(!!res);
 		}
 		wait(&test->status);
-		unit->success_count += print_error(unit->function_name,
+		unit->success_count += print_status(unit->function_name,
 				test->test_name,
 				test->status);
 		free(test);

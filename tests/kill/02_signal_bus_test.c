@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_unit.c                                        :+:      :+:    :+:   */
+/*   02_signal_bus_test.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaltayeh <yaltayeh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 13:46:14 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 23:04:12 by yaltayeh         ###   ########.fr       */
+/*   Created: 2025/07/19 23:00:37 by yaltayeh          #+#    #+#             */
+/*   Updated: 2025/07/19 23:00:38 by yaltayeh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include "libunit.h"
+#include <signal.h>
+#include <unistd.h>
 
-void	load_unit(t_unit *unit, char *func_name)
+int	signal_bus_test(void)
 {
-	ft_bzero(unit, sizeof(*unit));
-	unit->function_name = func_name;
+	if (kill(getpid(), SIGBUS) == 0)
+		return (0);
+	else
+		return (-1);
 }

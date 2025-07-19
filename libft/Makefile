@@ -22,6 +22,7 @@ FILES =	\
 		ft_string/ft_strlcat		\
 		ft_string/ft_strlcpy		\
 		ft_string/ft_strlen	 		\
+		ft_string/ft_strlen_fake	\
 		ft_string/ft_strmapi		\
 		ft_string/ft_strncmp		\
 		ft_string/ft_strcmp			\
