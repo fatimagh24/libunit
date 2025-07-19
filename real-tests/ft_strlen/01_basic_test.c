@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   01_basic_test.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fghanem <fghanem@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/19 13:45:22 by fghanem           #+#    #+#             */
+/*   Updated: 2025/07/19 14:07:26 by fghanem          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <string.h>
 #include "strlen_test.h"
-#include "libft.h"
+#include "include/libft.h"
 
 int basic_test(void)
 {
 	if (ft_strlen("testtest") == 8)
 		return (0);
-	else /* this dumb test fails */
+	else
 		return (-1);
 }

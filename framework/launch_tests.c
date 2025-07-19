@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   launch_tests.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fghanem <fghanem@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/19 13:46:02 by fghanem           #+#    #+#             */
+/*   Updated: 2025/07/19 14:07:12 by fghanem          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libunit.h"
 #include <signal.h>
-#include "libft.h"
+#include "include/libft.h"
+#include "include/ft_printf.h"
 #include <sys/types.h>
 #include <sys/time.h>
 #include <sys/resource.h>
@@ -34,18 +47,15 @@ static void	clean_tests(t_unit *unit)
 
 static int	print_error(char *function_name, char *test_name, int status)
 {
-	ft_putstr_fd(function_name, 1);
-	ft_putstr_fd(": ", 1);
-	ft_putstr_fd(test_name, 1);
 	if (WIFSIGNALED(status) && WTERMSIG(status) == SIGSEGV)
-		ft_putstr_fd(" [SIGSEGV]\n", 1);
+		ft_printf("%s: %s %s\n", function_name, test_name, "[SIGV]");
 	if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
 	{
-		ft_putstr_fd(" [OK]\n", 1);
+		ft_printf("%s: %s %s\n", function_name, test_name, "[OK]");
 		return (1);
 	}
 	else
-		ft_putstr_fd(" [KO]\n", 1);
+		ft_printf("%s: %s %s\n", function_name, test_name, "[KO]");
 	return (0);
 }
 
@@ -73,7 +83,6 @@ int	launch_tests(t_unit *unit)
 		free(test);
 		test = pop_test(unit);
 	}
-	ft_putnbr_fd(unit->success_count, 1);
-	ft_putstr_fd("tests checked.\n", 1);
+	ft_printf("%d tests passed\n", unit->success_count);
 	return (0);
 }

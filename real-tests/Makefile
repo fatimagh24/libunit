@@ -24,6 +24,19 @@ SOURCES +=	ft_atoi/02_basic_negative_test.c 	\
 
 endif
 
+FT_STRMAPI_TESTS ?= 1
+ifeq ($(FT_STRMAPI_TESTS), 1)
+CFLAGS += -DFT_STRMAPI_TESTS
+SOURCES +=	ft_strmapi/00_launcher.c		\
+			ft_strmapi/01_toupper_test.c	\
+			ft_strmapi/02_shift_index_test.c	\
+			ft_strmapi/03_invert_test.c		\
+			ft_strmapi/04_empty_str_test.c	\
+			ft_strmapi/05_reblace_ascii_test.c	\
+			ft_strmapi/06_segfault_test.c	\
+			ft_strmapi/07_replace_test.c	\
+
+endif
 
 OBJS = $(SOURCES:%.c=%.o)
 
