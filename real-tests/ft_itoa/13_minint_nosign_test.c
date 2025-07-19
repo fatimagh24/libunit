@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strmapi_test.h                                     :+:      :+:    :+:   */
+/*   13_minint_nosign_test.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fghanem <fghanem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 14:14:04 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 15:37:04 by fghanem          ###   ########.fr       */
+/*   Created: 2025/07/19 17:37:04 by fghanem           #+#    #+#             */
+/*   Updated: 2025/07/19 17:37:43 by fghanem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRMAPI_TEST_H
-# define STRMAPI_TEST_H
+#include "itoa_test.h"
 
-int	ft_strmapi_launcher(void);
-
-#endif
+int	minint_no_sign_test(void)
+{
+	if (ft_strcmp(ft_itoa(-2147483648, 0), "2147483648") == 0)
+		return (0);
+	else
+		return (-1);
+}

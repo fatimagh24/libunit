@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libunit.h"
 #include "atoi_test.h"
 #include "include/libft.h"
+#include "libunit.h"
 
 int	basic_negative_test(void)
 {

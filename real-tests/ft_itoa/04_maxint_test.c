@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strmapi_test.h                                     :+:      :+:    :+:   */
+/*   04_maxint_test.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fghanem <fghanem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 14:14:04 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 15:37:04 by fghanem          ###   ########.fr       */
+/*   Created: 2025/07/19 16:59:12 by fghanem           #+#    #+#             */
+/*   Updated: 2025/07/19 17:14:26 by fghanem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRMAPI_TEST_H
-# define STRMAPI_TEST_H
+#include "itoa_test.h"
 
-int	ft_strmapi_launcher(void);
-
-#endif
+int	maxint_test(void)
+{
+	if (ft_strcmp(ft_itoa(2147483647, 1), "2147483647") == 0)
+		return (0);
+	else
+		return (-1);
+}

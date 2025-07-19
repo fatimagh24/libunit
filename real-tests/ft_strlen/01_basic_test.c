@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include "strlen_test.h"
 #include "include/libft.h"
+#include "strlen_test.h"
+#include <string.h>
 
-int basic_test(void)
+int	basic_test(void)
 {
 	if (ft_strlen("testtest") == 8)
 		return (0);

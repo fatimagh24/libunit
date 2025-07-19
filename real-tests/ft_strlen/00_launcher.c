@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "strlen_test.h"
 #include "../include/libft.h"
 #include "libunit.h"
+#include "strlen_test.h"
 
-int strlen_launcher(void)
+int	strlen_launcher(void)
 {
-	t_unit *testlist;
+	t_unit	*testlist;
 
 	load_test(&testlist, "Basic test", &basic_test);
 	load_test(&testlist, "NULL test", &null_test);

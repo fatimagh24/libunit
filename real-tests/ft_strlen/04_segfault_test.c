@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include "strlen_test.h"
 #include "include/libft.h"
+#include "strlen_test.h"
+#include <string.h>
 
-int segfault_test(void)
+int	segfault_test(void)
 {
 	if (ft_strlen(NULL) == 0)
 		return (0);

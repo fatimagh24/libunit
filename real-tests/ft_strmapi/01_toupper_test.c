@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "include/libft.h"
 #include "libunit.h"
 #include "strmapi_test.h"
-#include "include/libft.h"
 
-int toupper_test(void)
+int	toupper_test(void)
 {
-    if (ft_strcmp(ft_strmapi("hello", to_upper_mapper), "HELLO") == 0)
-        return (0);
-    else
-        return (-1);
+	if (ft_strcmp(ft_strmapi("hello", to_upper_mapper), "HELLO") == 0)
+		return (0);
+	else
+		return (-1);
 }

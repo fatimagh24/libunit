@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libunit.h"
-#include <stdlib.h>
-#include <stdio.h>
 #include "include/libft.h"
+#include "libunit.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-int load_test(t_unit *unit, char *test_name, int (*test_func)(void))
+int	load_test(t_unit *unit, char *test_name, int (*test_func)(void))
 {
-	t_test_lst *test;
+	t_test_lst	*test;
 
 	test = ft_calloc(1, sizeof(t_test_lst));
 	if (!test)

@@ -25,6 +25,5 @@ int	ft_atoi_launcher(void)
 	load_test(&unit, "Basic positive", &basic_positive_test);
 	load_test(&unit, "Basic negative", &basic_negative_test);
 	load_test(&unit, "Zero", &zero_test);
-
 	return (launch_tests(&unit));
 }

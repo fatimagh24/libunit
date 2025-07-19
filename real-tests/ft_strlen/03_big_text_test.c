@@ -10,13 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "include/libft.h"
 #include "libunit.h"
 #include "strlen_test.h"
-#include "include/libft.h"
 
-int big_text_test(void)
+int	big_text_test(void)
 {
-	if (ft_strlen("The glenoid labrum is a ring of fibrocartilage that surrounds the glenoid cavity, the socket of the shoulder joint. It acts like a gasket, deepening the socket and contributing to shoulder stability. Injuries to the labrum, such as tears, can cause pain, clicking, and instability in the shoulder.") == strlen("The glenoid labrum is a ring of fibrocartilage that surrounds the glenoid cavity, the socket of the shoulder joint. It acts like a gasket, deepening the socket and contributing to shoulder stability. Injuries to the labrum, such as tears, can cause pain, clicking, and instability in the shoulder."))
+	if (ft_strlen("The glenoid labrum is a ring of fibrocartilage that surrounds the glenoid cavity,
+			the socket of the shoulder joint. It acts like a gasket,
+			deepening the socket and contributing to shoulder stability. Injuries to the labrum,
+			such as tears, can cause pain, clicking,
+			and instability in the shoulder.") == strlen("The glenoid labrum is a ring of fibrocartilage that surrounds the glenoid cavity,
+			the socket of the shoulder joint. It acts like a gasket,
+			deepening the socket and contributing to shoulder stability. Injuries to the labrum,
+			such as tears, can cause pain, clicking,
+			and instability in the shoulder."))
 		return (0);
 	else
 		return (-1);

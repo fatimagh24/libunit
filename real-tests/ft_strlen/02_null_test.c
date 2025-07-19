@@ -10,15 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "strlen_test.h"
 #include "include/libft.h"
 #include "libunit.h"
+#include "strlen_test.h"
 
-int null_test(void)
+int	null_test(void)
 {
 	if (ft_strlen(NULL) == 0)
 		return (0);
 	else
 		return (-1);
 }
-

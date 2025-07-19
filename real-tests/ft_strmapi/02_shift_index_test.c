@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "include/libft.h"
 #include "libunit.h"
 #include "strmapi_test.h"
-#include "include/libft.h"
 
-int shift_index_test(void)
+int	shift_index_test(void)
 {
-    if (ft_strcmp(ft_strmapi("abcd", shift_index), "bcde") == 0)
-        return (0);
-    else
-        return (-1);
+	if (ft_strcmp(ft_strmapi("abcd", shift_index), "bcde") == 0)
+		return (0);
+	else
+		return (-1);
 }

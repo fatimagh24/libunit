@@ -10,14 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "include/libft.h"
 #include "libunit.h"
 #include "strmapi_test.h"
-#include "include/libft.h"
 
-int replace_chars_test(void)
+int	replace_chars_test(void)
 {
-    if (ft_strcmp(ft_strmapi("hello world hi", space_to_underscore), "hello_world_hi") == 0)
-        return (0);
-    else
-        return (-1);
+	if (ft_strcmp(ft_strmapi("hello world hi", space_to_underscore),
+			"hello_world_hi") == 0)
+		return (0);
+	else
+		return (-1);
 }

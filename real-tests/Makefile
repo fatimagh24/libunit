@@ -38,6 +38,28 @@ SOURCES +=	ft_strmapi/00_launcher.c		\
 
 endif
 
+FT_ITOA_TESTS ?= 1
+ifeq ($(FT_ITOA_TESTS), 1)
+CFLAGS += -DFT_ITOA_TESTS
+SOURCES +=	ft_itoa/00_launcher.c				\
+			ft_itoa/01_zero_with_sign_test.c	\
+			ft_itoa/02_positive_test.c	\
+			ft_itoa/03_negative_no_sign_test.c			\
+			ft_itoa/04_maxint_test.c		\
+			ft_itoa/05_minint_test.c		\
+			ft_itoa/06_large_negative_test.c		\
+			ft_itoa/07_boundry_test.c		\
+			ft_itoa/08_negative_sign_test.c		\
+			ft_itoa/15_zero_without_sign_test.c \
+			ft_itoa/13_minint_nosign_test.c \
+			ft_itoa/14_large_pos_test.c	\
+			ft_itoa/09_trailing_zeros_test.c \
+			ft_itoa/10_negative_zero_test.c	\
+			ft_itoa/11_overflow_test.c	\
+			ft_itoa/12_overflow_negative_test.c \
+
+endif
+
 OBJS = $(SOURCES:%.c=%.o)
 
 all: $(NAME)

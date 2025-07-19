@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "include/libft.h"
 #include "libunit.h"
 #include "strmapi_test.h"
-#include "include/libft.h"
 
-int segfault_test(void)
+int	segfault_test(void)
 {
-    if (ft_strmapi(NULL, space_to_underscore) == NULL)
-        return (0);
-    else
-        return (-1);
+	if (ft_strmapi(NULL, space_to_underscore) == NULL)
+		return (0);
+	else
+		return (-1);
 }

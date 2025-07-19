@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strmapi_test.h                                     :+:      :+:    :+:   */
+/*   11_overflow_test.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fghanem <fghanem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 14:14:04 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 15:37:04 by fghanem          ###   ########.fr       */
+/*   Created: 2025/07/19 17:26:57 by fghanem           #+#    #+#             */
+/*   Updated: 2025/07/19 17:51:33 by fghanem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRMAPI_TEST_H
-# define STRMAPI_TEST_H
+#include "itoa_test.h"
 
-int	ft_strmapi_launcher(void);
-
-#endif
+int	overflow_test(void)
+{
+	if (ft_strcmp(ft_itoa((int)2147483648, 1), "-2147483648") == 0)
+		return (0);
+	else
+		return (-1);
+}

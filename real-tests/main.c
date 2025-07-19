@@ -6,7 +6,7 @@
 /*   By: fghanem <fghanem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:45:45 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 15:42:50 by fghanem          ###   ########.fr       */
+/*   Updated: 2025/07/19 18:07:35 by fghanem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 int	main(void)
 {
 	FT_ATOI_LAUNCHER;
+
 	FT_STRMAPI_LAUNCHER;
-	return(0);
+	
+	FT_ATOI_LAUNCHER;
+
+	return (0);
 }

@@ -6,22 +6,22 @@
 /*   By: fghanem <fghanem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:46:02 by fghanem           #+#    #+#             */
-/*   Updated: 2025/07/19 14:07:12 by fghanem          ###   ########.fr       */
+/*   Updated: 2025/07/19 18:06:10 by fghanem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "include/ft_printf.h"
+#include "include/libft.h"
 #include "libunit.h"
 #include <signal.h>
-#include "include/libft.h"
-#include "include/ft_printf.h"
-#include <sys/types.h>
-#include <sys/time.h>
 #include <sys/resource.h>
+#include <sys/time.h>
+#include <sys/types.h>
 #include <sys/wait.h>
 
 static t_test_lst	*pop_test(t_unit *unit)
 {
-	t_test_lst *test;
+	t_test_lst	*test;
 
 	test = unit->head;
 	if (!test)
@@ -35,7 +35,7 @@ static t_test_lst	*pop_test(t_unit *unit)
 
 static void	clean_tests(t_unit *unit)
 {
-	t_test_lst *test;
+	t_test_lst	*test;
 
 	test = pop_test(unit);
 	while (test)
@@ -49,6 +49,8 @@ static int	print_error(char *function_name, char *test_name, int status)
 {
 	if (WIFSIGNALED(status) && WTERMSIG(status) == SIGSEGV)
 		ft_printf("%s: %s %s\n", function_name, test_name, "[SIGV]");
+	if (WIFSIGNALED(status) && WTERMSIG(status) == SIGBUS)
+		ft_printf("%s: %s %s\n", function_name, test_name, "[SIGBUS]");
 	if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
 	{
 		ft_printf("%s: %s %s\n", function_name, test_name, "[OK]");
@@ -78,8 +80,9 @@ int	launch_tests(t_unit *unit)
 			exit(!!res);
 		}
 		wait(&test->status);
-		unit->success_count += print_error(unit->function_name, 
-			test->test_name, test->status);
+		unit->success_count += print_error(unit->function_name,
+				test->test_name,
+				test->status);
 		free(test);
 		test = pop_test(unit);
 	}
